@@ -1,0 +1,28 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Search</title>
+</head>
+<body>
+  <h1>Google Search</h1>
+  <form action="/search" method="post">
+    <label for="searchQuery">Enter your search query:</label>
+    <input type="text" id="searchQuery" name="searchQuery" required>
+    <button type="submit">Search</button>
+  </form>
+  <div>
+    <% if (results) { %>
+      <h2>Results for "<%= searchQuery %>":</h2>
+      <ul>
+        <% results.forEach((result, index) => { %>
+          <li><%= index + 1 %>. <a href="<%= result.link %>" target="_blank"><%= result.title %></a></li>
+        <% }) %>
+      </ul>
+    <% } %>
+  </div>
+</body>
+</html>
